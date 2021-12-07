@@ -572,6 +572,8 @@ class AdyenMethod(BasePaymentProvider):
 
             try:
                 response = self.adyen.checkout.payment_methods(rqdata)
+                for d in response.message['paymentMethods']:
+                    print(d)
                 if any(d.get('type', None) == self.method for d in response.message['paymentMethods']):
                     self.payment_methods = json.dumps(response.message)
                     return True
