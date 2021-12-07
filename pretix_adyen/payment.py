@@ -530,9 +530,10 @@ class AdyenMethod(BasePaymentProvider):
         global_allowed = super().is_allowed(request, total)
 
         if request.event.testmode:
-            local_allowed = request.event.settings.payment_adyen_test_merchant_account \
-                and request.event.settings.payment_adyen_test_api_key \
-                and request.event.settings.payment_adyen_test_hmac_key
+            local_allowed = request.event.settings.payment_adyen_test_merchant_account and request.event.settings.payment_adyen_test_api_key
+            # local_allowed = request.event.settings.payment_adyen_test_merchant_account \
+            #     and request.event.settings.payment_adyen_test_api_key \
+            #     and request.event.settings.payment_adyen_test_hmac_key
         else:
             local_allowed = request.event.settings.payment_adyen_prod_merchant_account \
                 and request.event.settings.payment_adyen_prod_api_key \
