@@ -227,7 +227,7 @@ class AdyenMethod(BasePaymentProvider):
 
     def _init_api(self, env=None):
         self.adyen = Adyen.Adyen(
-            app_name='pretix',
+            # app_name='pretix',
             xapikey=self.settings.test_api_key if self.event.testmode else self.settings.prod_api_key,
             # API-calls go only to -live in prod - not to -live-au or -live-us like in the frontend.
             platform=env if env else 'test' if self.event.testmode else 'live',
