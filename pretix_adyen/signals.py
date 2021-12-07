@@ -14,10 +14,10 @@ from pretix_adyen.payment import AdyenSettingsHolder
 @receiver(register_payment_providers, dispatch_uid="payment_adyen")
 def register_payment_provider(sender, **kwargs):
     from .payment import (
-        AdyenSettingsHolder, AdyenScheme, AdyenGiropay
+        AdyenSettingsHolder, AdyenScheme, AdyenGiropay, AdyenMultibanco
     )
 
-    return [AdyenSettingsHolder, AdyenScheme, AdyenGiropay]
+    return [AdyenSettingsHolder, AdyenScheme, AdyenGiropay, AdyenMultibanco]
 
 
 @receiver(html_head, dispatch_uid="payment_adyen_html_head")

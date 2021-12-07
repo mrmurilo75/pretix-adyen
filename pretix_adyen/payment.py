@@ -126,6 +126,11 @@ class AdyenSettingsHolder(BasePaymentProvider):
                      label=_('giropay'),
                      required=False,
                  )),
+                ('method_multibanco',
+                 forms.BooleanField(
+                     label=_('multibanco'),
+                     required=False,
+                 )),
             ] + list(super().settings_form_fields.items())
         )
         d.move_to_end('_enabled', last=False)
@@ -601,3 +606,9 @@ class AdyenGiropay(AdyenMethod):
     verbose_name = _('giropay via Adyen')
     public_name = _('giropay')
     method = 'giropay'
+
+class AdyenMultibanco(AdyenMethod):
+    identifier = 'adyen_multibanco'
+    verbose_name = _('multibanco via Adyen')
+    public_name = _('multibanco')
+    method = 'multibanco'
